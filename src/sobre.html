@@ -3,12 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Sobre o Alura Timer</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <link rel="stylesheet" href="css/sobre.css">
 </head>
 <body>
 
-  <p>O Alura timer é para voce guardar seus tempos de estudos na Alura</p>
-
-  <a href="#" id="link-fechar">Fechar</a>
+  <div class="container">
+    <img src="img/icon.png" alt="Logo do AluraTimer">
+    <p>O Alura timer é para você guardar seus tempos de estudo na Alura.</p>
+    <p>Versão: 1.0.0</p>
+    <p>Feito por <a href="#" id="link-youtube">Douglas Quintanilha</a></p>
+    <p>Versão do Electron <span id="versao_electron"></span></p>
+    <a href="#" id="link-fechar">Fechar</a>
+  </div>
 
   <script src="js/sobre.js"></script>
 </body>

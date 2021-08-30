@@ -41,7 +41,7 @@ ipcMain.on('abrir_janela_sobre', () => {
   if (sobreWindow == null) {
     sobreWindow = new BrowserWindow({ 
       width: 300,
-      height: 200,
+      height: 230,
       parent: mainWindow,
       modal: true,
       alwaysOnTop: true,
