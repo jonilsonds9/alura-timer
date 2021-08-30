@@ -7,15 +7,20 @@ require('electron-reload')(__dirname, {
   hardResetMethod: 'exit'
 });
 
-app.on('ready', () => {
-  console.log('Aplicação iniciada');
-
-  let mainWindow = new BrowserWindow({
-    width: 600,
-    height: 400
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 1000,
+    height: 600
   });
 
-  mainWindow.loadURL(`file://${__dirname}/app/index.html`);
+  mainWindow.loadFile(`${__dirname}/app/index.html`);
+};
 
+app.whenReady().then(() => {
+  createWindow();
+});
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
 });
 
