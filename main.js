@@ -1,4 +1,11 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
+// Add live reload
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+  hardResetMethod: 'exit'
+});
 
 app.on('ready', () => {
   console.log('Aplicação iniciada');
@@ -8,5 +15,7 @@ app.on('ready', () => {
     height: 400
   });
 
-  mainWindow.loadURL('https://www.alura.com.br');
+  mainWindow.loadURL(`file://${__dirname}/app/index.html`);
+
 });
+
