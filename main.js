@@ -7,8 +7,10 @@ require('electron-reload')(__dirname, {
   hardResetMethod: 'exit'
 });
 
+let mainWindow;
+
 function createWindow() {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
     webPreferences: {
@@ -18,7 +20,7 @@ function createWindow() {
   });
 
   // mainWindow.webContents.openDevTools()
-  mainWindow.loadFile(`${__dirname}/app/index.html`);
+  mainWindow.loadFile(`${__dirname}/src/index.html`);
 }
 
 app.whenReady().then(() => {
@@ -34,11 +36,19 @@ app.on('window-all-closed', function () {
 });
 
 let sobreWindow = null;
+
 ipcMain.on('abrir_janela_sobre', () => {
   if (sobreWindow == null) {
     sobreWindow = new BrowserWindow({ 
       width: 300,
-      height: 200
+      height: 200,
+      parent: mainWindow,
+      modal: true,
+      alwaysOnTop: true,
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false
+      }
     });
 
     sobreWindow.on('closed', () => {
@@ -46,5 +56,9 @@ ipcMain.on('abrir_janela_sobre', () => {
     });
   }
 
-  sobreWindow.loadFile(`${__dirname}/app/sobre.html`);
+  sobreWindow.loadFile(`${__dirname}/src/sobre.html`);
+});
+
+ipcMain.on('fechar_janela_sobre', () => {
+  sobreWindow.close();
 });
