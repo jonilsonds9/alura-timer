@@ -1,19 +1,18 @@
 const { ipcRenderer, shell } = require('electron');
-const process = require('process');
+    const process = require('process');
 
-let linkFechar = document.querySelector('#link-fechar');
-let linkYoutube = document.querySelector('#link-youtube');
-let versaoElectron = document.querySelector('#versao_electron');
+let linkFechar = document.querySelector("#link-fechar");
+let linkTwitter = document.querySelector("#link-twitter");
+let versaoElectron = document.querySelector('#versao-electron');
 
-window.onload = function() {
-  versaoElectron.textContent = process.versions.electron;
+window.onload = function(){
+    versaoElectron.textContent = process.versions.electron;
 }
 
 linkFechar.addEventListener('click', function () {
-  console.log('e pra fechar');
-  ipcRenderer.send('fechar_janela_sobre');
-});
+    ipcRenderer.send('fechar-janela-sobre');
+})
 
-linkYoutube.addEventListener('click', function () {
-  shell.openExternal('https://www.youtube.com/');
-});
+linkTwitter.addEventListener('click', function () {
+    shell.openExternal("https://www.twitter.com/dquintanilhas");
+})
